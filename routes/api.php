@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProveedorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get(
+    '/proveedor',
+    [ProveedorController::class, 'listar']
+);
+
+Route::get(
+    '/proveedor/{id}',
+    [ProveedorController::class, 'listar']
+);
+
+Route::post(
+    '/proveedor/insertarProveedor',
+    [ProveedorController::class, 'insertar']
+);
+
+Route::put(
+    '/proveedor/actualizarProveedor/{id}',
+    [ProveedorController::class, 'actualizar']
+);
+
+Route::delete(
+    '/proveedor/eliminarProveedor/{id}',
+    [ProveedorController::class, 'eliminar']
+);
